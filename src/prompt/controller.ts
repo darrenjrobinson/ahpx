@@ -171,10 +171,7 @@ export class TurnController {
 
 					case ActionType.ChatToolCallDelta: {
 						const a = action as ChatToolCallDeltaAction;
-						this.renderer.onToolCallDelta(
-							a.toolCallId,
-							a.content ?? "",
-						);
+						this.renderer.onToolCallDelta(a.toolCallId, a.content ?? "");
 						break;
 					}
 

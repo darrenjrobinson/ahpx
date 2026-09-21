@@ -20,7 +20,12 @@ import { readFileSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { type ActionEnvelope, ActionType } from "@microsoft/agent-host-protocol";
-import { CustomizationEnablementKind, ResponsePartKind, SessionLifecycle, SessionStatus } from "@microsoft/agent-host-protocol";
+import {
+	CustomizationEnablementKind,
+	ResponsePartKind,
+	SessionLifecycle,
+	SessionStatus,
+} from "@microsoft/agent-host-protocol";
 import type { CustomizationEnablement, SessionActiveClient, Turn } from "@microsoft/agent-host-protocol";
 import { Command } from "commander";
 import pc from "picocolors";
@@ -2286,8 +2291,7 @@ sessionCustomization
 
 						const currentEnablement = "enablement" in target ? target.enablement : undefined;
 						const currentSessionEnablement = currentEnablement?.find((entry) => entry.kind === "session");
-						const currentEnabled =
-							currentSessionEnablement?.enabled ?? ("enabled" in target ? target.enabled : true);
+						const currentEnabled = currentSessionEnablement?.enabled ?? ("enabled" in target ? target.enabled : true);
 						const newEnabled = !currentEnabled;
 						const enablement: CustomizationEnablement[] = currentEnablement
 							? [

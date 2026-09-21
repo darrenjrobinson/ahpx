@@ -163,7 +163,7 @@ describe("TurnController", () => {
 			makeChatState({
 				activeTurn: {
 					id: turnId,
-		startedAt: "2025-01-01T00:00:00.000Z",
+					startedAt: "2025-01-01T00:00:00.000Z",
 					message: message("say banana"),
 					responseParts: [{ kind: ResponsePartKind.Markdown, id: "p1", content: "BANANA" }],
 					usage: undefined,
@@ -196,7 +196,7 @@ describe("TurnController", () => {
 			makeChatState({
 				activeTurn: {
 					id: turnId,
-		startedAt: "2025-01-01T00:00:00.000Z",
+					startedAt: "2025-01-01T00:00:00.000Z",
 					message: message("say elephant"),
 					responseParts: [{ kind: ResponsePartKind.Markdown, id: "p1", content: "ELEPHANT" }],
 					usage: undefined,
@@ -419,7 +419,7 @@ describe("TurnController", () => {
 			makeChatState({
 				activeTurn: {
 					id: "placeholder",
-		startedAt: "2025-01-01T00:00:00.000Z",
+					startedAt: "2025-01-01T00:00:00.000Z",
 					message: message("test"),
 					responseParts: [
 						{
@@ -571,7 +571,7 @@ describe("TurnController", () => {
 			makeChatState({
 				activeTurn: {
 					id: "placeholder",
-		startedAt: "2025-01-01T00:00:00.000Z",
+					startedAt: "2025-01-01T00:00:00.000Z",
 					message: message("test"),
 					responseParts: [
 						{
@@ -637,7 +637,7 @@ describe("TurnController", () => {
 			makeChatState({
 				activeTurn: {
 					id: "placeholder",
-		startedAt: "2025-01-01T00:00:00.000Z",
+					startedAt: "2025-01-01T00:00:00.000Z",
 					message: message("test"),
 					responseParts: [
 						{
@@ -702,7 +702,7 @@ describe("TurnController", () => {
 			makeChatState({
 				activeTurn: {
 					id: "placeholder",
-		startedAt: "2025-01-01T00:00:00.000Z",
+					startedAt: "2025-01-01T00:00:00.000Z",
 					message: message("test"),
 					responseParts: [
 						{
@@ -766,7 +766,7 @@ describe("TurnController", () => {
 			makeChatState({
 				activeTurn: {
 					id: "placeholder",
-		startedAt: "2025-01-01T00:00:00.000Z",
+					startedAt: "2025-01-01T00:00:00.000Z",
 					message: message("test"),
 					responseParts: [
 						{

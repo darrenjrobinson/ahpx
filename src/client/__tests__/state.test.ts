@@ -1,8 +1,8 @@
 import { ActionType } from "@microsoft/agent-host-protocol";
 import type { ActionEnvelope } from "@microsoft/agent-host-protocol";
 import {
-	MessageKind,
 	CustomizationEnablementKind,
+	MessageKind,
 	PendingMessageKind,
 	ResponsePartKind,
 	SessionLifecycle,
@@ -190,7 +190,7 @@ describe("StateMirror", () => {
 					{
 						type: ActionType.ChatTurnStarted,
 						startedAt: "2025-01-01T00:00:00.000Z",
-		turnId: "t1",
+						turnId: "t1",
 						message: message("Hello"),
 					},
 					1,
@@ -228,7 +228,7 @@ describe("StateMirror", () => {
 					{
 						type: ActionType.ChatTurnStarted,
 						startedAt: "2025-01-01T00:00:00.000Z",
-		turnId: "t1",
+						turnId: "t1",
 						message: message("Hello"),
 					},
 					1,
@@ -285,7 +285,7 @@ describe("StateMirror", () => {
 					{
 						type: ActionType.ChatTurnStarted,
 						startedAt: "2025-01-01T00:00:00.000Z",
-		turnId: "t1",
+						turnId: "t1",
 						message: message("Hello"),
 					},
 					1,
@@ -337,7 +337,7 @@ describe("StateMirror", () => {
 				state: makeChatState({
 					activeTurn: {
 						id: "t1",
-		startedAt: "2025-01-01T00:00:00.000Z",
+						startedAt: "2025-01-01T00:00:00.000Z",
 						message: message("Hello"),
 						responseParts: [{ kind: ResponsePartKind.Markdown, id: "part-1", content: "Hi there!" }],
 						usage: undefined,
@@ -351,7 +351,7 @@ describe("StateMirror", () => {
 					{
 						type: ActionType.ChatTurnComplete,
 						duration: 0,
-		turnId: "t1",
+						turnId: "t1",
 					},
 					3,
 				),
@@ -396,7 +396,7 @@ describe("StateMirror", () => {
 				state: makeChatState({
 					activeTurn: {
 						id: "t1",
-		startedAt: "2025-01-01T00:00:00.000Z",
+						startedAt: "2025-01-01T00:00:00.000Z",
 						message: message("Run a tool"),
 						responseParts: [],
 						usage: undefined,
@@ -797,7 +797,9 @@ describe("StateMirror", () => {
 
 				const session = mirror.getSession("copilot:/s1")!;
 				expect(session.customizations).toHaveLength(1);
-				expect(("enablement" in session.customizations![0] ? session.customizations![0].enablement?.[0].enabled : undefined)).toBe(true);
+				expect(
+					"enablement" in session.customizations![0] ? session.customizations![0].enablement?.[0].enabled : undefined,
+				).toBe(true);
 			});
 
 			it("replaces customizations on second change", () => {
@@ -865,7 +867,9 @@ describe("StateMirror", () => {
 				);
 
 				const session = mirror.getSession("copilot:/s1")!;
-				expect(("enablement" in session.customizations![0] ? session.customizations![0].enablement?.[0].enabled : undefined)).toBe(false);
+				expect(
+					"enablement" in session.customizations![0] ? session.customizations![0].enablement?.[0].enabled : undefined,
+				).toBe(false);
 			});
 
 			it("ignores toggle for unknown customization URI", () => {
@@ -897,7 +901,9 @@ describe("StateMirror", () => {
 				);
 
 				const session = mirror.getSession("copilot:/s1")!;
-				expect(("enablement" in session.customizations![0] ? session.customizations![0].enablement?.[0].enabled : undefined)).toBe(true);
+				expect(
+					"enablement" in session.customizations![0] ? session.customizations![0].enablement?.[0].enabled : undefined,
+				).toBe(true);
 			});
 
 			it("ignores toggle when no customizations set", () => {
@@ -933,7 +939,7 @@ describe("StateMirror", () => {
 						turns: [
 							{
 								id: "t1",
-		startedAt: "2025-01-01T00:00:00.000Z",
+								startedAt: "2025-01-01T00:00:00.000Z",
 								message: message("msg1"),
 								responseParts: [],
 								usage: undefined,
@@ -941,7 +947,7 @@ describe("StateMirror", () => {
 							},
 							{
 								id: "t2",
-		startedAt: "2025-01-01T00:00:00.000Z",
+								startedAt: "2025-01-01T00:00:00.000Z",
 								message: message("msg2"),
 								responseParts: [],
 								usage: undefined,
@@ -975,7 +981,7 @@ describe("StateMirror", () => {
 						turns: [
 							{
 								id: "t1",
-		startedAt: "2025-01-01T00:00:00.000Z",
+								startedAt: "2025-01-01T00:00:00.000Z",
 								message: message("msg1"),
 								responseParts: [],
 								usage: undefined,
@@ -983,7 +989,7 @@ describe("StateMirror", () => {
 							},
 							{
 								id: "t2",
-		startedAt: "2025-01-01T00:00:00.000Z",
+								startedAt: "2025-01-01T00:00:00.000Z",
 								message: message("msg2"),
 								responseParts: [],
 								usage: undefined,
@@ -991,7 +997,7 @@ describe("StateMirror", () => {
 							},
 							{
 								id: "t3",
-		startedAt: "2025-01-01T00:00:00.000Z",
+								startedAt: "2025-01-01T00:00:00.000Z",
 								message: message("msg3"),
 								responseParts: [],
 								usage: undefined,
@@ -1026,7 +1032,7 @@ describe("StateMirror", () => {
 						turns: [
 							{
 								id: "t1",
-		startedAt: "2025-01-01T00:00:00.000Z",
+								startedAt: "2025-01-01T00:00:00.000Z",
 								message: message("msg1"),
 								responseParts: [],
 								usage: undefined,
@@ -1035,7 +1041,7 @@ describe("StateMirror", () => {
 						],
 						activeTurn: {
 							id: "t2",
-		startedAt: "2025-01-01T00:00:00.000Z",
+							startedAt: "2025-01-01T00:00:00.000Z",
 							message: message("in progress"),
 							responseParts: [],
 							usage: undefined,
@@ -1066,7 +1072,7 @@ describe("StateMirror", () => {
 						turns: [
 							{
 								id: "t1",
-		startedAt: "2025-01-01T00:00:00.000Z",
+								startedAt: "2025-01-01T00:00:00.000Z",
 								message: message("msg1"),
 								responseParts: [],
 								usage: undefined,
@@ -1074,7 +1080,7 @@ describe("StateMirror", () => {
 							},
 							{
 								id: "t2",
-		startedAt: "2025-01-01T00:00:00.000Z",
+								startedAt: "2025-01-01T00:00:00.000Z",
 								message: message("msg2"),
 								responseParts: [],
 								usage: undefined,
@@ -1108,7 +1114,7 @@ describe("StateMirror", () => {
 					state: makeChatState({
 						activeTurn: {
 							id: "t1",
-		startedAt: "2025-01-01T00:00:00.000Z",
+							startedAt: "2025-01-01T00:00:00.000Z",
 							message: message("Run a tool"),
 							responseParts: [
 								{
@@ -1169,7 +1175,7 @@ describe("StateMirror", () => {
 						{
 							type: ActionType.ChatTurnStarted,
 							startedAt: "2025-01-01T00:00:00.000Z",
-		turnId: "t1",
+							turnId: "t1",
 							message: message("steer"),
 							queuedMessageId: "s1",
 						},
@@ -1199,7 +1205,7 @@ describe("StateMirror", () => {
 						{
 							type: ActionType.ChatTurnStarted,
 							startedAt: "2025-01-01T00:00:00.000Z",
-		turnId: "t1",
+							turnId: "t1",
 							message: message("first"),
 							queuedMessageId: "q1",
 						},
@@ -1228,7 +1234,7 @@ describe("StateMirror", () => {
 						{
 							type: ActionType.ChatTurnStarted,
 							startedAt: "2025-01-01T00:00:00.000Z",
-		turnId: "t1",
+							turnId: "t1",
 							message: message("hello"),
 						},
 						1,
@@ -1281,7 +1287,7 @@ describe("StateMirror", () => {
 					{
 						type: ActionType.ChatTurnStarted,
 						startedAt: "2025-01-01T00:00:00.000Z",
-		turnId: "t1",
+						turnId: "t1",
 						message: message("Hello"),
 					},
 					2,
