@@ -3241,8 +3241,11 @@ program
 			const formatter = formatterFromOpts(globalOpts);
 
 			await withConnection({ server: opts.server, config: cfg }, async (client) => {
+				await client.subscribe(record.sessionUri);
+				const chatUri = client.state.getSession(record.sessionUri)?.defaultChat;
 				const watcher = new SessionWatcher(client, record.sessionUri, formatter, {
 					statusOut: process.stderr,
+					chatUri,
 				});
 
 				const onSigint = () => watcher.stop();

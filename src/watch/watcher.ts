@@ -34,6 +34,8 @@ export interface StatusOutput {
 export interface SessionWatcherOptions {
 	/** Stream for status messages (default: process.stderr) */
 	statusOut?: StatusOutput;
+	/** Resolved default chat channel, when distinct from the session channel. */
+	chatUri?: URI;
 }
 
 /**
@@ -54,7 +56,7 @@ export class SessionWatcher {
 		options: SessionWatcherOptions = {},
 	) {
 		this.statusOut = options.statusOut ?? process.stderr;
-		this.chatUri = sessionUri;
+		this.chatUri = options.chatUri ?? sessionUri;
 	}
 
 	/**
