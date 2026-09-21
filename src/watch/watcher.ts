@@ -143,7 +143,7 @@ export class SessionWatcher {
 							toolName: tc.toolName,
 							displayName: tc.displayName,
 							invocationMessage: tc.invocationMessage,
-							toolInput: tc.toolInput,
+							toolInput: tc.toolInput && typeof tc.toolInput === "object" ? tc.toolInput.uri : tc.toolInput,
 						};
 						this.formatter.onToolCallReady(tc.toolCallId, info);
 					} else if (tc.status === ToolCallStatus.Completed) {
@@ -197,7 +197,10 @@ export class SessionWatcher {
 
 			case ActionType.ChatToolCallDelta: {
 				const a = action as ChatToolCallDeltaAction;
-				this.formatter.onToolCallDelta(a.toolCallId, a.content);
+				this.formatter.onToolCallDelta(
+					a.toolCallId,
+					a.content ?? "",
+				);
 				break;
 			}
 
@@ -208,7 +211,7 @@ export class SessionWatcher {
 					toolName: a.toolCallId,
 					displayName: a.toolCallId,
 					invocationMessage: a.invocationMessage,
-					toolInput: a.toolInput,
+					toolInput: a.toolInput && typeof a.toolInput === "object" ? a.toolInput.uri : a.toolInput,
 				};
 
 				// Try to get actual names from state
@@ -263,7 +266,7 @@ export class SessionWatcher {
 
 			case ActionType.ChatError: {
 				const a = action as ChatErrorAction;
-				this.formatter.onTurnError(a.error);
+				this.formatter.onTurnError(a.part.error);
 				break;
 			}
 
