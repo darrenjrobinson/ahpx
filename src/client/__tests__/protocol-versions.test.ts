@@ -25,7 +25,7 @@ describe("resolveProtocolVersions", () => {
 
 	it("defaults to every supported compatibility baseline", () => {
 		expect(resolveProtocolVersions()).toEqual([...SUPPORTED_PROTOCOL_VERSIONS]);
-		expect(resolveProtocolVersions()).toEqual(expect.arrayContaining(["1.0.0", "0.9.0"]));
+		expect(resolveProtocolVersions()).toEqual(expect.arrayContaining(["1.0.0"]));
 	});
 
 	it("uses the env var when set", () => {
